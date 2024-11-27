@@ -1,0 +1,3 @@
+fastapi==0.115.5   # Framework principal pour créer l'application
+uvicorn==0.23.2   # Serveur ASGI pour exécuter l'application
+jinja2==3.1.2     # Moteur de templates pour les pages HTML

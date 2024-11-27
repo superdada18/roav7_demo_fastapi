@@ -39,12 +39,12 @@ async def display_product(request: Request):
     """
     return templates.TemplateResponse("index.html", {"request": request, "product": product_data})
 
-@app.post("/update_stock/")
-async def update_stock():
+@app.post("/update_stock/{id}")
+async def update_stock(id: int):
     """
     Réduit le stock de 1 si possible, puis redirige vers la page principale.
     """
-    if product_data["stock"] > 0:
-        product_data["stock"] -= 1
+    if product_data[id-1]["stock"] > 0:
+        product_data[id-1]["stock"] -= 1
     # Redirige vers la page principale "/"
     return RedirectResponse(url="/", status_code=303)

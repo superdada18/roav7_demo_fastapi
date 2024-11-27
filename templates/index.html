@@ -8,13 +8,15 @@
 </head>
 <body>
     <h1>Détails du produit</h1>
+    {% for product_item in product %}
     <div>
-        <p><strong>Nom :</strong> {{ product.name }}</p>
-        <p><strong>Prix :</strong> {{ product.price }} €</p>
-        <p><strong>Quantité en stock :</strong> {{ product.stock }}</p>
+        <p><strong>Nom :</strong> {{ product_item.name }}</p>
+        <p><strong>Prix :</strong> {{ product_item.price }} €</p>
+        <p><strong>Quantité en stock :</strong> {{ product_item.stock }}</p>
     </div>
-    <form action="/update_stock/" method="post">
+    <form action="/update_stock/{{ product_item.id }}" method="post">
         <button id="update-stock" {% if product.stock == 0 %}disabled{% endif %}>Retirer une unité</button>
     </form>
+    {% endfor %}
 </body>
 </html>

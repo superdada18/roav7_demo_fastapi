@@ -12,12 +12,25 @@ templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Base de données fictive (en mémoire)
-product_data = {
+product_data = [{
     "id": 1,
     "name": "Produit A",
     "price": 10.99,
     "stock": 10
-}
+    },
+    {
+    "id": 2,
+    "name": "Produit B",
+    "price": 20,
+    "stock": 5
+    },
+    {
+    "id": 3,
+    "name": "Produit C",
+    "price": 30,
+    "stock": 2
+    }
+]
 
 @app.get("/", response_class=HTMLResponse)
 async def display_product(request: Request):
